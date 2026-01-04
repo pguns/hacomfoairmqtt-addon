@@ -1139,7 +1139,7 @@ def on_disconnect(client, userdata, flags, reason_code, properties):
 ###
 
 # Connect to the MQTT broker
-mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, 'CA350')
+mqttc = mqtt.Client(client_id="CA350")
 if  MQTTUser != False and MQTTPassword != False :
     mqttc.username_pw_set(MQTTUser,MQTTPassword)
 
