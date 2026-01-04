@@ -27,16 +27,37 @@ import json
 import socket
 import logging
 
+class TcpSerial:
+    def __init__(self, host, port, timeout=1.0):
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.sock.settimeout(timeout)
+        self.sock.connect((host, port))
+
+    def write(self, data: bytes):
+        return self.sock.sendall(data)
+
+    def read(self, size=1):
+        try:
+            return self.sock.recv(size)
+        except socket.timeout:
+            return b''
+
+    def inWaiting(self):
+        # nicht wirklich verfügbar bei TCP → simulieren
+        return 1
+
+    def close(self):
+        self.sock.close()
+
 logging.basicConfig(level=logging.INFO)
 
 with open("/data/options.json") as f:
     options = json.load(f)
 
-sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-sock.settimeout(2)
-sock.connect((options["comfoair_host"], options["comfoair_port"]))
-
-ser = sock   #old ser port
+ser = TcpSerial(
+    options["comfoair_host"],
+    options["comfoair_port"]
+)
 
 # Service Configuration
 RS485_protocol = options['RS485_protocol'] # Protocol type
@@ -265,17 +286,17 @@ def serial_command(cmd):
         ser.write(cmd)
         time.sleep(2)
 
-        # while ser.inWaiting() > 0:
-        #     data += ser.read(1)
-        ser.settimeout(0.5)
-        try:
-            while True:
-                chunk = ser.recv(1)
-                if not chunk:
-                    break
-                data += chunk
-        except socket.timeout:
-            pass
+        while ser.inWaiting() > 0:
+            data += ser.read(1)
+        #ser.settimeout(0.5)
+        # try:
+        #     while True:
+        #         chunk = ser.recv(1)
+        #         if not chunk:
+        #             break
+        #         data += chunk
+        # except socket.timeout:
+        #     pass
         
         if len(data) > 0:
             return data
