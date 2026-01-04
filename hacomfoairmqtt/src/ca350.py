@@ -1170,6 +1170,7 @@ while True:
             "***" if mqtt_pass else None
         )
         mqttc.connect(mqtt_host, mqtt_port, 60)
+        mqttc.loop_start()
         break
     except:
         warning_msg('Can\'t connect to MQTT broker. Retrying in 10 seconds.')
