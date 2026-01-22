@@ -7,6 +7,10 @@ startup: services
 boot: auto
 init: false
 timezone: true 
+usb: true
+devices:
+  - /dev/serial/by-id/
+
 
 arch:
   - amd64
