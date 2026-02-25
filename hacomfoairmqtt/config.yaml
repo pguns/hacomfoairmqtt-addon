@@ -23,6 +23,8 @@ options:
   comfoair_host: "192.168.40.130"
   comfoair_port: 8899
   Serial_port: "/tmp/comfoair"
+  MQTTUser: " "
+  MQTTPassword: " "
   RS485_protocol: false
   refresh_interval: 10
   PcMode: 0
