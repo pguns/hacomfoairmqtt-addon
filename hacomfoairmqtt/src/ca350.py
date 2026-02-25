@@ -62,7 +62,7 @@ SetUpFanLevelsAtStart = options['SetUpFanLevelsAtStart']
 
 # MQTT options from Home Assistant Supervisor
 mqtt_host = os.environ.get('MQTT_HOST', 'core-mosquitto')
-mqtt_port = int(os.environ.get('MQTT_PORT', '1883'))
+mqtt_port = '1883'
 mqtt_user = os.environ.get('MQTT_USER')
 mqtt_pass = os.environ.get('MQTT_PASS')
 
