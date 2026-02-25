@@ -53,6 +53,8 @@ schema:
   comfoair_host: str
   comfoair_port: int
   Serial_port: str
+  MQTTUser: str
+  MQTTPassword: str
   RS485_protocol: bool
   refresh_interval: int
   PcMode: list(0|1|3|4)
