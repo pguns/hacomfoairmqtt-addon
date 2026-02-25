@@ -61,10 +61,13 @@ SetUpFanLevelsAtStart = options['SetUpFanLevelsAtStart']
 # MQTTPassword = options['MQTTPassword']        # MQTT broker - password - default: 0 (disabled/no authentication)
 
 # MQTT options from Home Assistant Supervisor
-mqtt_host = os.environ.get('MQTT_HOST', 'core-mosquitto')
+mqtt_host = 'core-mosquitto'
 mqtt_port = '1883'
-mqtt_user = os.environ.get('MQTT_USER')
-mqtt_pass = os.environ.get('MQTT_PASS')
+#mqtt_user = os.environ.get('MQTT_USER')
+#mqtt_pass = os.environ.get('MQTT_PASS')
+mqtt_user = options['MQTTUser']
+mqtt_pass = options['MQTTPassword']
+
 
 
 HAEnableAutoDiscoverySensors = options['HAEnableAutoDiscoverySensors']  # Home Assistant send auto discovery for temperatures
