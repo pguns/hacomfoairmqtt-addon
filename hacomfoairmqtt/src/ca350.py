@@ -30,6 +30,11 @@ import serial
 
 logging.basicConfig(level=logging.INFO)
 
+print("************************************")
+print("* TESTje CA350 MQTT Home Assistant *")
+print("************************************")
+print("")
+
 with open("/data/options.json") as f:
     options = json.load(f)
 
