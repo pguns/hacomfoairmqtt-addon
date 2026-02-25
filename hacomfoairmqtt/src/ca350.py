@@ -54,17 +54,17 @@ FanInHigh = int(options['FanInHigh'])
 #Set fan levels at the start of the program. If false will be only controlled when fans are enabled or disabled.
 SetUpFanLevelsAtStart = options['SetUpFanLevelsAtStart']
 
-# MQTTServer = options['MQTTServer']            # MQTT broker - IP
-# MQTTPort = int(options['MQTTPort'])           # MQTT broker - Port
-# MQTTKeepalive = int(options['MQTTKeepalive']) # MQTT broker - keepalive
-# MQTTUser = options['MQTTUser']                # MQTT broker - user - default: 0 (disabled/no authentication)
-# MQTTPassword = options['MQTTPassword']        # MQTT broker - password - default: 0 (disabled/no authentication)
+MQTTServer = options['MQTTServer']            # MQTT broker - IP
+MQTTPort = int(options['MQTTPort'])           # MQTT broker - Port
+MQTTKeepalive = int(options['MQTTKeepalive']) # MQTT broker - keepalive
+MQTTUser = options['MQTTUser']                # MQTT broker - user - default: 0 (disabled/no authentication)
+MQTTPassword = options['MQTTPassword']        # MQTT broker - password - default: 0 (disabled/no authentication)
 
 # MQTT options from Home Assistant Supervisor
-mqtt_host = os.environ.get("MQTT_HOST", "core-mosquitto")
-mqtt_port = int(os.environ.get("MQTT_PORT", "1883"))
-mqtt_user = os.environ.get("MQTT_USER")
-mqtt_pass = os.environ.get("MQTT_PASS")
+# mqtt_host = os.environ.get("MQTT_HOST", "core-mosquitto")
+# mqtt_port = int(os.environ.get("MQTT_PORT", "1883"))
+# mqtt_user = os.environ.get("MQTT_USER")
+# mqtt_pass = os.environ.get("MQTT_PASS")
 
 
 HAEnableAutoDiscoverySensors = options['HAEnableAutoDiscoverySensors']  # Home Assistant send auto discovery for temperatures
